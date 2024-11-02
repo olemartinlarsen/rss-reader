@@ -33,6 +33,7 @@ dependencies {
     // Ktor
     implementation("io.ktor:ktor-server-core:3.0.0")
     implementation("io.ktor:ktor-server-netty:3.0.0")
+    implementation("io.ktor:ktor-server-auth:3.0.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -43,7 +44,7 @@ java {
 }
 
 application {
-    mainClass.set("AppKt") // Make sure this points to the main class
+    mainClass.set("MainKt") // Make sure this points to the main class
 }
 
 tasks.named<Test>("test") {
