@@ -1,0 +1,23 @@
+{
+  "name": "rss-reader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olemartinlarsen/rss-reader.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olemartinlarsen/rss-reader/issues"
+  },
+  "homepage": "https://github.com/olemartinlarsen/rss-reader#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  }
+}
