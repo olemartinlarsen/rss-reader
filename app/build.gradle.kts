@@ -29,6 +29,10 @@ dependencies {
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
+
+    // Ktor
+    implementation("io.ktor:ktor-server-core:3.0.0")
+    implementation("io.ktor:ktor-server-netty:3.0.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
