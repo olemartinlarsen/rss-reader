@@ -59,7 +59,7 @@ fun main() {
                         val principal = call.principal<UserIdPrincipal>()
                         if (principal != null) {
                             call.sessions.set(UserSession(name = principal.name, count = 1))
-                            call.respondRedirect("/dashboard")
+                            call.respondRedirect("/")
                         } else {
                             call.respond(HttpStatusCode.Unauthorized, "Invalid credentials")
                         }
@@ -68,7 +68,7 @@ fun main() {
             }
 
             authenticate("auth-session") {
-                route("/dashboard") {
+                route("/") {
                     get {
                         val userSession = call.sessions.get<UserSession>()
                         if (userSession != null) {
