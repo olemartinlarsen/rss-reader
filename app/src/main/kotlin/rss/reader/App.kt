@@ -67,6 +67,11 @@ fun main() {
                 }
             }
 
+            get("/logout") {
+                call.sessions.clear<UserSession>()
+                call.respondRedirect("/login")
+            }
+
             authenticate("auth-session") {
                 route("/") {
                     get {
