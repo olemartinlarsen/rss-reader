@@ -8,6 +8,7 @@
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     kotlin("jvm") version "2.0.21" // Kotlin version to use
+    kotlin("plugin.serialization") version "2.0.21"
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
@@ -34,6 +35,7 @@ dependencies {
     implementation("io.ktor:ktor-server-core:3.0.0")
     implementation("io.ktor:ktor-server-netty:3.0.0")
     implementation("io.ktor:ktor-server-auth:3.0.0")
+    implementation("io.ktor:ktor-server-sessions:3.0.0")
     implementation("io.ktor:ktor-server-html-builder-jvm:3.0.0")
 }
 
