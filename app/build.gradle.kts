@@ -47,7 +47,7 @@ java {
 }
 
 application {
-    mainClass.set("MainKt") // Make sure this points to the main class
+    mainClass.set("rss.reader.AppKt")
 }
 
 tasks.named<Test>("test") {
