@@ -34,6 +34,7 @@ dependencies {
     implementation("io.ktor:ktor-server-core:3.0.0")
     implementation("io.ktor:ktor-server-netty:3.0.0")
     implementation("io.ktor:ktor-server-auth:3.0.0")
+    implementation("io.ktor:ktor-server-html-builder-jvm:3.0.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
