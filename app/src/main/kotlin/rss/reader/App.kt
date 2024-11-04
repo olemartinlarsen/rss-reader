@@ -11,6 +11,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 import kotlinx.serialization.Serializable
+import rss.reader.auth.UserSession
 import rss.reader.routes.authRoutes
 import rss.reader.templates.LoginTemplate
 import rss.reader.templates.DashboardTemplate
@@ -55,6 +56,3 @@ fun main() {
         }
     }.start(wait = true)
 }
-
-@Serializable
-data class UserSession(val name: String, val count: Int)
