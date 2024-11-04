@@ -21,6 +21,8 @@ repositories {
 
 dependencies {
     val kotlinVersion = "3.0.0"
+    val exposedVersion = "0.56.0"
+
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
@@ -38,6 +40,12 @@ dependencies {
     implementation("io.ktor:ktor-server-auth:$kotlinVersion")
     implementation("io.ktor:ktor-server-sessions:$kotlinVersion")
     implementation("io.ktor:ktor-server-html-builder-jvm:$kotlinVersion")
+
+    // Database
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.xerial:sqlite-jdbc:3.47.0.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
