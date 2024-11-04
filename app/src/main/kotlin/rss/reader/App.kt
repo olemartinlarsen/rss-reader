@@ -10,9 +10,11 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 import rss.reader.auth.UserSession
+import rss.reader.database.initDatabase
 import rss.reader.routes.authRoutes
 
 fun main() {
+    initDatabase()
     embeddedServer(Netty, port = 8080) {
         install(Sessions) {
             cookie<UserSession>("user_session") {
