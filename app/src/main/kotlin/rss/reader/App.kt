@@ -11,6 +11,8 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 import kotlinx.serialization.Serializable
+import rss.reader.templates.LoginTemplate
+import rss.reader.templates.DashboardTemplate
 
 fun main() {
     embeddedServer(Netty, port = 8080) {
