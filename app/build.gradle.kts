@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
+    val kotlinVersion = "3.0.0"
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
@@ -32,11 +33,11 @@ dependencies {
     implementation("com.google.guava:guava:31.1-jre")
 
     // Ktor
-    implementation("io.ktor:ktor-server-core:3.0.0")
-    implementation("io.ktor:ktor-server-netty:3.0.0")
-    implementation("io.ktor:ktor-server-auth:3.0.0")
-    implementation("io.ktor:ktor-server-sessions:3.0.0")
-    implementation("io.ktor:ktor-server-html-builder-jvm:3.0.0")
+    implementation("io.ktor:ktor-server-core:$kotlinVersion")
+    implementation("io.ktor:ktor-server-netty:$kotlinVersion")
+    implementation("io.ktor:ktor-server-auth:$kotlinVersion")
+    implementation("io.ktor:ktor-server-sessions:$kotlinVersion")
+    implementation("io.ktor:ktor-server-html-builder-jvm:$kotlinVersion")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
