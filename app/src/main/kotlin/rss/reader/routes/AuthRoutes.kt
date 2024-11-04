@@ -6,7 +6,7 @@ import io.ktor.server.html.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
-import rss.reader.UserSession
+import rss.reader.auth.UserSession
 import rss.reader.templates.DashboardTemplate
 import rss.reader.templates.LoginTemplate
 
@@ -20,7 +20,7 @@ fun Route.authRoutes() {
             post {
                 val principal = call.principal<UserIdPrincipal>()
                 if (principal != null) {
-                    call.sessions.set(UserSession(name = principal.name, count = 1))
+                    call.sessions.set(UserSession(name = principal.name))
                     call.respondRedirect("/")
                 } else {
                     call.respond(HttpStatusCode.Unauthorized, "Invalid credentials")
