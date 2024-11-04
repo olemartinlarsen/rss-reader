@@ -11,6 +11,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 import kotlinx.serialization.Serializable
+import rss.reader.routes.authRoutes
 import rss.reader.templates.LoginTemplate
 import rss.reader.templates.DashboardTemplate
 
@@ -50,46 +51,7 @@ fun main() {
 
         routing {
             staticResources("/static", "static")
-
-            route("/login") {
-                get {
-                    call.respondHtmlTemplate(LoginTemplate()) {}
-                }
-
-                authenticate("auth-form") {
-                    post {
-                        val principal = call.principal<UserIdPrincipal>()
-                        if (principal != null) {
-                            call.sessions.set(UserSession(name = principal.name, count = 1))
-                            call.respondRedirect("/")
-                        } else {
-                            call.respond(HttpStatusCode.Unauthorized, "Invalid credentials")
-                        }
-                    }
-                }
-            }
-
-            get("/logout") {
-                call.sessions.clear<UserSession>()
-                call.respondRedirect("/login")
-            }
-
-            authenticate("auth-session") {
-                route("/") {
-                    get {
-                        val userSession = call.sessions.get<UserSession>()
-                        if (userSession != null) {
-                            call.respondHtmlTemplate(DashboardTemplate()) {
-                                name {
-                                    +userSession.name
-                                }
-                            }
-                        } else {
-                            call.respondRedirect("/login")
-                        }
-                    }
-                }
-            }
+            authRoutes()
         }
     }.start(wait = true)
 }
