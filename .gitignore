@@ -49,3 +49,9 @@ package-lock.json
 
 # Tailwind CSS build output
 app/src/main/resources/static/css/output.css
+
+# Database
+app/data.db
+.idea/dataSources/
+.idea/dataSources.xml
+.idea/dataSources.local.xml
