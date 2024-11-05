@@ -7,7 +7,4 @@ import rss.reader.database.models.Users
 
 fun initDatabase() {
     Database.connect("jdbc:sqlite:data.db", driver = "org.sqlite.JDBC")
-    transaction {
-        SchemaUtils.create(Users)
-    }
 }
