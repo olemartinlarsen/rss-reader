@@ -23,12 +23,10 @@ dependencies {
     val kotlinVersion = "3.0.0"
     val exposedVersion = "0.56.0"
 
-    // Use the Kotlin JUnit 5 integration.
+    // JUnit 5
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-
-    // Use the JUnit 5 integration.
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // This dependency is used by the application.
