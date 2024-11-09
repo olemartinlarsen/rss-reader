@@ -44,6 +44,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.xerial:sqlite-jdbc:3.47.0.0")
+    implementation("org.mindrot:jbcrypt:0.4")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
