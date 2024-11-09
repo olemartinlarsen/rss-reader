@@ -12,9 +12,14 @@ import io.ktor.server.sessions.*
 import rss.reader.auth.UserSession
 import rss.reader.database.initDatabase
 import rss.reader.routes.authRoutes
+import rss.reader.services.UserService
+import rss.reader.services.AuthService
 
 fun main() {
-    initDatabase()
+    val database = initDatabase()
+    val userService = UserService(database)
+    val authService = AuthService(userService)
+
     embeddedServer(Netty, port = 8080) {
         install(Sessions) {
             cookie<UserSession>("user_session") {
@@ -24,20 +29,6 @@ fun main() {
         }
 
         install(Authentication) {
-            form("auth-form") {
-                userParamName = "username"
-                passwordParamName = "password"
-                validate { credentials ->
-                    if (credentials.name == "jetbrains" && credentials.password == "foobar") {
-                        UserIdPrincipal(credentials.name)
-                    } else {
-                        null
-                    }
-                }
-                challenge {
-                    call.respond(HttpStatusCode.Unauthorized, "Credentials are not valid")
-                }
-            }
             session<UserSession>("auth-session") {
                 validate { session ->
                     if (session.name.isNotEmpty()) session else null
@@ -50,7 +41,8 @@ fun main() {
 
         routing {
             staticResources("/static", "static")
-            authRoutes()
+
+            authRoutes(authService)
         }
     }.start(wait = true)
 }
