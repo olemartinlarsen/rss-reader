@@ -53,6 +53,13 @@ class LoginTemplate : Template<HTML> {
                         +"Log In"
                     }
                 }
+                div(classes = "mt-4 text-center") {
+                    p(classes = "text-gray-700 dark:text-gray-300") {
+                        a(href = "/register", classes = "text-blue-500 dark:text-blue-400 hover:underline") {
+                            +"Don't have an account? Register here"
+                        }
+                    }
+                }
             }
         }
     }
