@@ -2,13 +2,12 @@ package rss.reader.services
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
 import rss.reader.database.models.Users
+import rss.reader.database.models.Users.select
 
 @Serializable
 data class User(val username: String, val passwordHash: String)
@@ -29,10 +28,9 @@ class UserService(database: Database) {
         }[Users.id]
     }
 
-    suspend fun read(id: Int): User? {
+    suspend fun findByUsername(username: String): User? {
         return dbQuery {
-            Users.selectAll()
-                .where { Users.id eq id }
+            Users.selectAll().where { Users.username eq username }
                 .map { User(it[Users.username], it[Users.passwordHash]) }
                 .singleOrNull()
         }
